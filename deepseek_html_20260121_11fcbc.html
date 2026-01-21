@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Cool Text Generator : AnujWebs&lt;/&gt;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+    <meta name="theme-color" content="#FF00FF">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* NEON THEME VARIABLES */
+        :root {
+            /* Neon Color Scheme */
+            --neon-pink: #FF00FF;
+            --neon-blue: #00FFFF;
+            --neon-green: #39FF14;
+            --neon-yellow: #FFFF00;
+            --neon-purple: #9D00FF;
+            --neon-orange: #FF5E00;
+            
+            /* Theme Application */
+            --primary: var(--neon-pink);
+            --on-primary: #000000;
+            --primary-container: rgba(255, 0, 255, 0.1);
+            --on-primary-container: var(--neon-pink);
+            --secondary: var(--neon-blue);
+            --surface: rgba(10, 10, 20, 0.95);
+            --surface-variant: rgba(255, 255, 255, 0.05);
+            --outline: var(--neon-green);
+            --background: #0a0a14;
+            --on-background: #ffffff;
+            
+            /* Neon Glow Effects */
+            --glow-pink: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink);
+            --glow-blue: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+            --glow-green: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green), 0 0 30px var(--neon-green);
+            --glow-yellow: 0 0 10px var(--neon-yellow), 0 0 20px var(--neon-yellow), 0 0 30px var(--neon-yellow);
+            
+            /* Animation */
+            --pulse-animation: pulse 2s infinite;
+            --flicker-animation: flicker 1.5s infinite alternate;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow: var(--glow-pink);
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+        
+        @keyframes rainbow {
+            0% { color: var(--neon-pink); }
+            20% { color: var(--neon-blue); }
+            40% { color: var(--neon-green); }
+            60% { color: var(--neon-yellow); }
+            80% { color: var(--neon-purple); }
+            100% { color: var(--neon-pink); }
+        }
+        
+        @keyframes slideColor {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background);
+            color: var(--on-background);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #0a0a14, #000000, #1a0a2a, #001a14);
+            background-size: 400% 400%;
+            animation: slideColor 15s ease infinite;
+        }
+
+        /* App Bar - Neon Style */
+        .app-bar {
+            background-color: rgba(10, 10, 20, 0.9);
+            backdrop-filter: blur(10px);
+            height: 64px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            border-bottom: 1px solid var(--neon-pink);
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+        }
+
+        .app-bar-content {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .app-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0;
+            color: var(--neon-pink);
+            text-shadow: var(--glow-pink);
+            animation: var(--flicker-animation);
+            letter-spacing: 1px;
+        }
+
+        .app-icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: var(--neon-blue);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            color: var(--neon-green);
+            transform: scale(1.1);
+        }
+
+        /* Input Container - Neon Style */
+        .input-container {
+            padding: 8px 16px 16px;
+            background: rgba(10, 10, 20, 0.7);
+        }
+
+        .search-wrapper {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--neon-blue);
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            padding: 4px 16px;
+            height: 56px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .search-wrapper:focus-within {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .search-wrapper input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            height: 100%;
+            font-size: 16px;
+            outline: none;
+            color: var(--on-background);
+            font-weight: 500;
+        }
+
+        .search-wrapper input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-wrapper .clear {
+            background: transparent;
+            border: none;
+            color: var(--neon-pink);
+            padding: 8px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .search-wrapper .clear:hover {
+            background-color: rgba(255, 0, 255, 0.1);
+            transform: rotate(90deg);
+        }
+
+        /* Main Container */
+        .container {
+            padding: 16px;
+            position: relative;
+        }
+
+        /* Color Options */
+        .color-options {
+            display: flex;
+            gap: 10px;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .color-options::-webkit-scrollbar {
+            display: none;
+        }
+
+        .color-option {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            box-shadow: 0 0 5px currentColor;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        .color-option.active {
+            border-color: white;
+            transform: scale(1.2);
+            animation: var(--pulse-animation);
+        }
+
+        /* Font Categories */
+        .font-categories {
+            display: flex;
+            gap: 10px;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .font-categories::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-btn {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--neon-purple);
+            border-radius: 20px;
+            color: var(--on-background);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+
+        .category-btn:hover {
+            background: rgba(157, 0, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active {
+            background: var(--neon-purple);
+            color: black;
+            font-weight: bold;
+            box-shadow: 0 0 10px var(--neon-purple);
+        }
+
+        /* Font Grid */
+        .myfontlist {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .myfontlist {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Font Cards - Neon Style */
+        .myfont {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 16px;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .myfont::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .myfont:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--neon-blue);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
+        }
+
+        .myfont:hover::before {
+            left: 100%;
+        }
+
+        .myfont:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .font-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--neon-green);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px var(--neon-green);
+        }
+
+        .myfont p {
+            margin: 0;
+            font-size: 20px;
+            color: var(--on-background);
+            word-break: break-all;
+            font-family: inherit;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Neon Text Effects */
+        .neon-pink { color: var(--neon-pink); text-shadow: var(--glow-pink); }
+        .neon-blue { color: var(--neon-blue); text-shadow: var(--glow-blue); }
+        .neon-green { color: var(--neon-green); text-shadow: var(--glow-green); }
+        .neon-yellow { color: var(--neon-yellow); text-shadow: var(--glow-yellow); }
+        .neon-rainbow { 
+            background: linear-gradient(90deg, 
+                var(--neon-pink), 
+                var(--neon-blue), 
+                var(--neon-green), 
+                var(--neon-yellow), 
+                var(--neon-purple)
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow 3s linear infinite;
+            background-size: 200% auto;
+        }
+
+        /* New Font Styles */
+        .glitch-effect {
+            position: relative;
+            animation: glitch 0.3s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        .matrix-effect {
+            font-family: monospace;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .matrix-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 50%, rgba(57, 255, 20, 0.1) 50%);
+            background-size: 100% 4px;
+        }
+
+        .holographic-effect {
+            background: linear-gradient(45deg, 
+                #ff0080, #00ff80, #0080ff, #ff8000
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 400% 400%;
+            animation: slideColor 3s ease infinite;
+        }
+
+        /* Copy Hint */
+        .copy-hint {
+            font-size: 10px;
+            color: var(--outline);
+            text-align: right;
+            margin-top: 4px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .myfont:hover .copy-hint {
+            opacity: 1;
+            color: var(--neon-blue);
+        }
+
+        /* Copied Notification - Neon Style */
+        .copied {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(49, 48, 51, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--neon-green);
+            padding: 12px 24px;
+            border-radius: 25px;
+            z-index: 1000;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(57, 255, 20, 0.3);
+            animation: slideUp 0.3s ease-out;
+            border: 1px solid var(--neon-green);
+        }
+
+        .copied input { 
+            display: none; 
+        }
+
+        @keyframes slideUp {
+            from { bottom: -50px; opacity: 0; }
+            to { bottom: 32px; opacity: 1; }
+        }
+
+        /* Footer - Neon Style */
+        .bottom-info {
+            padding: 24px 16px 80px;
+        }
+
+        .footer-card {
+            background: rgba(255, 0, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: var(--neon-pink);
+            padding: 24px;
+            border-radius: 24px;
+            border: 1px solid var(--neon-pink);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 0, 255, 0.1), transparent);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .footer-card h2 {
+            font-size: 18px;
+            margin-top: 0;
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-card p {
+            position: relative;
+            z-index: 1;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-more {
+            display: inline-block;
+            margin-top: 12px;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+            color: black;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+        }
+
+        .btn-more:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { 
+            width: 8px; 
+            background: transparent; 
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-pink);
+            border-radius: 10px;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Settings Panel */
+        .settings-panel {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 20px;
+            transition: right 0.3s ease;
+            z-index: 1000;
+            border-left: 2px solid var(--neon-blue);
+            overflow-y: auto;
+        }
+
+        .settings-panel.open {
+            right: 0;
+        }
+
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--neon-blue);
+        }
+
+        .settings-header h3 {
+            color: var(--neon-blue);
+            margin: 0;
+        }
+
+        .close-settings {
+            background: none;
+            border: none;
+            color: var(--neon-pink);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .setting-group {
+            margin-bottom: 20px;
+        }
+
+        .setting-group h4 {
+            color: var(--neon-green);
+            margin-bottom: 10px;
+        }
+
+        .slider-container {
+            margin: 15px 0;
+        }
+
+        .slider-container label {
+            display: block;
+            color: var(--on-background);
+            margin-bottom: 5px;
+        }
+
+        .slider-container input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--neon-pink);
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--neon-blue);
+        }
+
+        .checkbox-container label {
+            color: var(--on-background);
+            cursor: pointer;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 20, 0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .loading.active {
+            display: flex;
+        }
+
+        .neon-loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid transparent;
+            border-top: 3px solid var(--neon-pink);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            color: var(--neon-blue);
+            font-size: 14px;
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .app-title {
+                font-size: 18px;
+            }
+            
+            .myfont p {
+                font-size: 16px;
+            }
+            
+            .color-option {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .settings-panel {
+                width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading" id="loading">
+        <div class="neon-loader"></div>
+        <div class="loading-text">Generating Fonts...</div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-header">
+            <h3><i class="fas fa-cog"></i> Settings</h3>
+            <button class="close-settings" id="closeSettings">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="setting-group">
+            <h4><i class="fas fa-palette"></i> Theme</h4>
+            <div class="checkbox-container">
+                <input type="checkbox" id="darkMode" checked>
+                <label for="darkMode">Dark Mode</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="animations" checked>
+                <label for="animations">Enable Animations</label>
+            </div>
+        </div>
+        
+        <div class="setting-group">
+            <h4><i class="fas fa-font"></i> Font Display</h4>
+            <div class="slider-container">
+                <label for="fontSize">Font Size: <span id="fontSizeValue">20px</span></label>
+                <input type="range" id="fontSize" min="12" max="32" value="20">
+            </div>
+            <div class="slider-container">
+                <label for="glowIntensity">Glow Intensity: <span id="glowValue">Medium</span></label>
+                <input type="range" id="glowIntensity" min="1" max="3" value="2">
+            </div>
+        </div>
+        
+        <div class="setting-group">
+            <h4><i class="fas fa-magic"></i> Effects</h4>
+            <div class="checkbox-container">
+                <input type="checkbox" id="autoCopy" checked>
+                <label for="autoCopy">Auto-copy on click</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="randomColors" checked>
+                <label for="randomColors">Random colors for fonts</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="showHints" checked>
+                <label for="showHints">Show copy hints</label>
+            </div>
+        </div>
+        
+        <div class="setting-group">
+            <h4><i class="fas fa-info-circle"></i> Info</h4>
+            <p style="color: var(--outline); font-size: 12px;">
+                Total Fonts: <span id="fontCount">36</span><br>
+                Last Updated: Today<br>
+                Version: 2.0 Neon
+            </p>
+        </div>
+        
+        <button class="btn-more" style="width: 100%; margin-top: 20px;" onclick="resetSettings()">
+            <i class="fas fa-redo"></i> Reset Settings
+        </button>
+    </div>
+
+    <!-- App Header -->
+    <header class="app-bar">
+        <div class="app-bar-content">
+            <h1 class="app-title">AnujWebs&lt;/&gt;</h1>
+            <div class="app-icons">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="theme-toggle" id="settingsToggle" aria-label="Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Input Section -->
+    <div class="input-container">
+        <div class="search-wrapper">
+            <input type="text" id="myfont-text" placeholder="Type your text here..." autocomplete="off" autofocus>
+            <button class="clear" aria-label="Clear text">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Color Options -->
+    <div class="container">
+        <div class="color-options">
+            <div class="color-option active" style="background: var(--neon-pink);" data-color="neon-pink"></div>
+            <div class="color-option" style="background: var(--neon-blue);" data-color="neon-blue"></div>
+            <div class="color-option" style="background: var(--neon-green);" data-color="neon-green"></div>
+            <div class="color-option" style="background: var(--neon-yellow);" data-color="neon-yellow"></div>
+            <div class="color-option" style="background: var(--neon-purple);" data-color="neon-purple"></div>
+            <div class="color-option" style="background: var(--neon-orange);" data-color="neon-orange"></div>
+            <div class="color-option" style="background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue), var(--neon-green));" data-color="neon-rainbow"></div>
+        </div>
+
+        <!-- Font Categories -->
+        <div class="font-categories">
+            <button class="category-btn active" data-category="all">All Fonts</button>
+            <button class="category-btn" data-category="neon">Neon</button>
+            <button class="category-btn" data-category="fancy">Fancy</button>
+            <button class="category-btn" data-category="retro">Retro</button>
+            <button class="category-btn" data-category="special">Special Effects</button>
+            <button class="category-btn" data-category="symbols">Symbols</button>
+        </div>
+
+        <!-- Font Grid -->
+        <main class="container">
+            <div class="myfontlist">
+                <!-- Double Struck Font -->
+                <div class="myfont" data-category="fancy">
+                    <span class="font-label">Double Struck</span>
+                    <p class="doubleStruckCharMap neon-blue">𝔽𝕒𝕟𝕔𝕪 𝕃𝕖𝕥𝕥𝕖𝕣𝕤</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Italic Font -->
+                <div class="myfont" data-category="fancy">
+                    <span class="font-label">Italic</span>
+                    <p class="italicCharMap neon-pink">𝘍𝘢𝘯𝘤𝘺 𝘓𝘦𝘵𝘵𝘦𝘳𝘴</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Bold Italic -->
+                <div class="myfont" data-category="fancy">
+                    <span class="font-label">Bold Italic</span>
+                    <p class="boldItalicCharMap neon-green">𝙁𝙖𝙣𝙘𝙮 𝙇𝙚𝙩𝙩𝙚𝙧𝙨</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Monospace -->
+                <div class="myfont" data-category="retro">
+                    <span class="font-label">Mono Space</span>
+                    <p class="monospaceCharMap neon-yellow">𝙵𝚊𝚗𝚌𝚢 𝙻𝚎𝚝𝚝𝚎𝚛𝚜</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Bubbles -->
+                <div class="myfont" data-category="symbols">
+                    <span class="font-label">Lunitools Bubbles</span>
+                    <p class="lunitoolsbubbles neon-purple">Ⓕⓐⓝⓒⓨ Ⓛⓔⓣⓣⓔⓡⓢ</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Inverted Squares -->
+                <div class="myfont" data-category="symbols">
+                    <span class="font-label">Inverted Squares</span>
+                    <p class="invertedSquaresCharMap neon-orange">🅵🅰🅽🅲🆈 🅻🅴🆃🆃🅴🆁🆂</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Squiggle2 -->
+                <div class="myfont" data-category="fancy">
+                    <span class="font-label">Squiggle2</span>
+                    <p class="squiggle2CharMap neon-blue">Fαɳƈ ყ Lҽƚƚҽɾʂ</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Symbols -->
+                <div class="myfont" data-category="symbols">
+                    <span class="font-label">Symbols</span>
+                    <p class="result result-s16 neon-pink">ꄞꁲꋊꀯꐞ ꒒ꈼꋖꋖꈼꌅꌚ</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Squiggle19 -->
+                <div class="myfont" data-category="fancy">
+                    <span class="font-label">Squiggle19</span>
+                    <p class="result result-s13 neon-green">ꊰꋬꋊꉔꌦ ꒒ꏂ꓄꓄ꏂꋪꇙ</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Old English -->
+                <div class="myfont" data-category="fancy">
+                    <span class="font-label">Old English</span>
+                    <p class="oldEnglishCharMap neon-purple">𝔉𝔞𝔫𝔠𝔶 𝔏𝔢𝔱𝔱𝔢𝔯𝔰</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Medieval -->
+                <div class="myfont" data-category="fancy">
+                    <span class="font-label">Medieval</span>
+                    <p class="medievalCharMap neon-yellow">𝕱𝖆𝖓𝖈𝖞 𝕷𝖊𝖙𝖙𝖊𝖗𝖘</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Cursive -->
+                <div class="myfont" data-category="fancy">
+                    <span class="font-label">Cursive</span>
+                    <p class="cursiveCharMap neon-blue">𝓕𝓪𝓷𝓬𝔂 𝓛𝓮𝓽𝓽𝓮𝓻𝓼</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Scriptify -->
+                <div class="myfont" data-category="fancy">
+                    <span class="font-label">Scriptify</span>
+                    <p class="scriptify neon-pink">𝐹𝒶𝓃𝒸𝓎 𝐿𝑒𝓉𝓉𝑒𝓇𝓈</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Fat Text -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Fat Text</span>
+                    <p class="result result-s7 neon-green">ᖴᗩᑎᑕ Ƴ ᒪᗴ 丅 丅 ᗴᖇᔕ</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- WideText -->
+                <div class="myfont" data-category="fancy">
+                    <span class="font-label">WideText</span>
+                    <p class="wideTextCharMap neon-yellow">Ｆａｎｃｙ Ｌｅｔｔｅｒｓ</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Cross Top & Bottom -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Cross Top & Bottom</span>
+                    <p class="result result-s27 neon-purple">F͓̽a͓̽n͓̽c͓̽y͓̽ L͓̽e͓̽t͓̽t͓̽e͓̽r͓̽s͓̽</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Slash Through -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Slash Through</span>
+                    <p class="result result-s29 neon-blue">𝙵̷𝚊̷𝚗̷𝚌̷𝚢̷ 𝙻̷𝚎̷𝚝̷𝚝̷𝚎̷𝚛̷𝚜̷</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Reverse Mirror -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Reverse Mirror</span>
+                    <p class="result result-s4 neon-pink">ɟɐuɔʎ lǝʇʇǝɹs</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Symbols 2 -->
+                <div class="myfont" data-category="symbols">
+                    <span class="font-label">Symbols</span>
+                    <p class="result result-s2 neon-green">Ϝ ꍏ ♫ ☾☿ ↳ € ☂☂ € ☈ⓢ</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Bold -->
+                <div class="myfont" data-category="fancy">
+                    <span class="font-label">Bold</span>
+                    <p class="boldCharMap neon-yellow">𝐅𝐚𝐧𝐜𝐲 𝐋𝐞𝐭𝐭𝐞𝐫𝐬</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Luni Tools Flip -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Luni Tools Flip</span>
+                    <p class="lunitoolsflipencode neon-purple">sɹǝʇʇǝ˥ ʎɔuɐℲ</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Squares -->
+                <div class="myfont" data-category="symbols">
+                    <span class="font-label">Squares</span>
+                    <p class="squaresCharMap neon-blue">🄵🄰🄽🄲🅈 🄻🄴🅃🅃🄴🅁🅂</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Indian Way -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Indian Way</span>
+                    <p class="result result-s19 neon-pink">Բ ค Ո ८ ע Ն ૯੮੮૯ Ր ς</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Russian Way -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Russian Way</span>
+                    <p class="result result-s20 neon-green">Fапcч Гёттёя$</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Asian Style -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Asian Style</span>
+                    <p class="asianStyleCharMap neon-yellow">千卂几匚ㄚ ㄥ乇ㄒㄒ乇尺丂</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Asian Style2 -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Asian Style2</span>
+                    <p class="asianStyle2CharMap neon-purple">ｷﾑ刀ᄃﾘ ﾚ乇ｲｲｴ尺丂</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Super Script -->
+                <div class="myfont" data-category="fancy">
+                    <span class="font-label">Super Script</span>
+                    <p class="superscriptCharMap neon-blue">ᶠᵃⁿᶜʸ ᴸᵉᵗᵗᵉʳˢ</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Strike Through -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Strike Through</span>
+                    <p class="strikeThrough neon-pink">F̶a̶n̶c̶y̶ ̶L̶e̶t̶t̶e̶r̶s̶</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Arrow Underline -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Arrow Underline</span>
+                    <p class="result result-s30 neon-green">F͢a͢n͢c͢y͢ L͢e͢t͢t͢e͢r͢s͢</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Bat Man -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Bat Man</span>
+                    <p class="result result-s31 neon-yellow">F̼a̼n̼c̼y̼ L̼e̼t̼t̼e̼r̼s̼</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+                
+                <!-- Wavy Joiner -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Wavy Joiner</span>
+                    <p class="wavyJoiner neon-purple">≋F≋a≋n≋c≋y≋</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- NEW FONTS ADDED -->
+                
+                <!-- Glitch Effect -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Glitch Effect</span>
+                    <p class="glitch-effect neon-rainbow">GLITCH TEXT</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Matrix Effect -->
+                <div class="myfont" data-category="neon">
+                    <span class="font-label">Matrix Effect</span>
+                    <p class="matrix-effect">MATRIX STYLE</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Holographic -->
+                <div class="myfont" data-category="neon">
+                    <span class="font-label">Holographic</span>
+                    <p class="holographic-effect">HOLOGRAPHIC</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Neon Outline -->
+                <div class="myfont" data-category="neon">
+                    <span class="font-label">Neon Outline</span>
+                    <p class="neon-outline neon-blue">OUTLINE TEXT</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Future Tech -->
+                <div class="myfont" data-category="neon">
+                    <span class="font-label">Future Tech</span>
+                    <p class="future-tech neon-green">FUTURE TECH</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Cyberpunk -->
+                <div class="myfont" data-category="neon">
+                    <span class="font-label">Cyberpunk</span>
+                    <p class="cyberpunk neon-pink">CYBERPUNK</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Vaporwave -->
+                <div class="myfont" data-category="retro">
+                    <span class="font-label">Vaporwave</span>
+                    <p class="vaporwave neon-purple">ＶＡＰＯＲＷＡＶＥ</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Retro Game -->
+                <div class="myfont" data-category="retro">
+                    <span class="font-label">Retro Game</span>
+                    <p class="retro-game neon-yellow">RETRO GAME</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Pixel Art -->
+                <div class="myfont" data-category="retro">
+                    <span class="font-label">Pixel Art</span>
+                    <p class="pixel-art neon-green">PIXEL ART</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Comic Style -->
+                <div class="myfont" data-category="fancy">
+                    <span class="font-label">Comic Style</span>
+                    <p class="comic-style neon-orange">COMIC STYLE</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Graffiti -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Graffiti</span>
+                    <p class="graffiti neon-blue">GRAFFITI</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Alien Language -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Alien Language</span>
+                    <p class="alien-language neon-green">ALIEN TEXT</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Magic Runes -->
+                <div class="myfont" data-category="symbols">
+                    <span class="font-label">Magic Runes</span>
+                    <p class="magic-runes neon-purple">ᚱᚢᚾᛖᛋ</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Egyptian Hieroglyphs -->
+                <div class="myfont" data-category="symbols">
+                    <span class="font-label">Egyptian Hieroglyphs</span>
+                    <p class="egyptian-hieroglyphs neon-yellow">𓁹𓂀𓃻𓄿𓅂</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Binary Code -->
+                <div class="myfont" data-category="special">
+                    <span class="font-label">Binary Code</span>
+                    <p class="binary-code neon-blue">01000010 01001001 01001110 01000001 01010010 01011001</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Braille -->
+                <div class="myfont" data-category="symbols">
+                    <span class="font-label">Braille</span>
+                    <p class="braille neon-pink">⠃⠗⠁⠊⠇⠇⠑</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bottom-info">
+        <div class="footer-card">
+            <h2>AnujWebs&lt;/&gt;</h2>
+            <p>JOIN OUR TELEGRAM CHANNEL FOR MORE FREE OPEN SOURCE WEBSITE CODES.</p>
+            <a href="https://t.me/+J-GKHRyxaRVkZDE1" class="btn-more">
+                <i class="fab fa-telegram"></i> CLICK TO JOIN TELEGRAM
+            </a>
+            <div style="margin-top: 15px; font-size: 12px; opacity: 0.8;">
+                <i class="fas fa-code"></i> Font Generator v2.0 Neon Edition
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simplified JavaScript -->
+    <script>
+        // Simplified version keeping essential functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const input = document.getElementById('myfont-text');
+            const clearBtn = document.querySelector('.clear');
+            const colorOptions = document.querySelectorAll('.color-option');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const fontItems = document.querySelectorAll('.myfont');
+            const loading = document.getElementById('loading');
+            const themeToggle = document.getElementById('themeToggle');
+            const settingsToggle = document.getElementById('settingsToggle');
+            const settingsPanel = document.getElementById('settingsPanel');
+            const closeSettings = document.getElementById('closeSettings');
+            const fontSizeSlider = document.getElementById('fontSize');
+            const fontSizeValue = document.getElementById('fontSizeValue');
+            const glowSlider = document.getElementById('glowIntensity');
+            const glowValue = document.getElementById('glowValue');
+            
+            // Initialize
+            updateFontCount();
+            applyNeonEffects();
+            
+            // Input Handler
+            input.addEventListener('input', function() {
+                const text = this.value;
+                updateAllFonts(text);
+            });
+            
+            // Clear Button
+            clearBtn.addEventListener('click', function() {
+                input.value = '';
+                updateAllFonts('');
+                input.focus();
+            });
+            
+            // Color Options
+            colorOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    colorOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    const colorClass = this.dataset.color;
+                    applyColorToAllFonts(colorClass);
+                });
+            });
+            
+            // Category Filter
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const category = this.dataset.category;
+                    filterFontsByCategory(category);
+                });
+            });
+            
+            // Font Copy Functionality
+            fontItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const textElement = this.querySelector('p');
+                    const text = textElement.textContent;
+                    copyToClipboard(text);
+                    showCopiedNotification(text);
+                });
+            });
+            
+            // Theme Toggle
+            themeToggle.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-moon')) {
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                    document.body.style.filter = 'invert(1) hue-rotate(180deg)';
+                } else {
+                    icon.classList.replace('fa-sun', 'fa-moon');
+                    document.body.style.filter = 'none';
+                }
+            });
+            
+            // Settings Toggle
+            settingsToggle.addEventListener('click', function() {
+                settingsPanel.classList.toggle('open');
+            });
+            
+            closeSettings.addEventListener('click', function() {
+                settingsPanel.classList.remove('open');
+            });
+            
+            // Font Size Slider
+            fontSizeSlider.addEventListener('input', function() {
+                const size = this.value + 'px';
+                fontSizeValue.textContent = size;
+                document.querySelectorAll('.myfont p').forEach(p => {
+                    p.style.fontSize = size;
+                });
+            });
+            
+            // Glow Intensity Slider
+            glowSlider.addEventListener('input', function() {
+                const value = parseInt(this.value);
+                let intensity = 'Low';
+                if (value === 2) intensity = 'Medium';
+                if (value === 3) intensity = 'High';
+                glowValue.textContent = intensity;
+                
+                // Update glow effect based on intensity
+                updateGlowIntensity(value);
+            });
+            
+            // Functions
+            function updateAllFonts(text) {
+                showLoading(true);
+                
+                // Simulate font generation delay
+                setTimeout(() => {
+                    // Update each font type with the new text
+                    const fontClasses = [
+                        'doubleStruckCharMap', 'italicCharMap', 'boldItalicCharMap',
+                        'monospaceCharMap', 'lunitoolsbubbles', 'invertedSquaresCharMap',
+                        'squiggle2CharMap', 'result-s16', 'result-s13', 'oldEnglishCharMap',
+                        'medievalCharMap', 'cursiveCharMap', 'scriptify', 'result-s7',
+                        'wideTextCharMap', 'result-s27', 'result-s29', 'result-s4',
+                        'result-s2', 'boldCharMap', 'lunitoolsflipencode', 'squaresCharMap',
+                        'result-s19', 'result-s20', 'asianStyleCharMap', 'asianStyle2CharMap',
+                        'superscriptCharMap', 'strikeThrough', 'result-s30', 'result-s31',
+                        'wavyJoiner'
+                    ];
+                    
+                    // Apply text to each font class
+                    fontClasses.forEach(className => {
+                        const elements = document.querySelectorAll('.' + className);
+                        elements.forEach(el => {
+                            if (text.trim() === '') {
+                                el.textContent = className.replace(/CharMap|result-s\d+/g, '').replace(/([A-Z])/g, ' $1').trim() + ' Letters';
+                            } else {
+                                el.textContent = generateFontText(text, className);
+                            }
+                        });
+                    });
+                    
+                    // Update new fonts
+                    updateNewFonts(text);
+                    
+                    showLoading(false);
+                }, 300);
+            }
+            
+            function generateFontText(text, className) {
+                // Simplified font generation
+                const fontMaps = {
+                    'doubleStruckCharMap': text => text.split('').map(c => 
+                        /[a-zA-Z]/.test(c) ? String.fromCharCode(c.charCodeAt(0) + 120213) : c
+                    ).join(''),
+                    'italicCharMap': text => text.split('').map(c => 
+                        /[a-zA-Z]/.test(c) ? String.fromCharCode(c.charCodeAt(0) + 120259) : c
+                    ).join(''),
+                    'boldItalicCharMap': text => text.split('').map(c => 
+                        /[a-zA-Z]/.test(c) ? String.fromCharCode(c.charCodeAt(0) + 120255) : c
+                    ).join(''),
+                    // Add more font mappings as needed
+                };
+                
+                return fontMaps[className] ? fontMaps[className](text) : text.toUpperCase();
+            }
+            
+            function updateNewFonts(text) {
+                // Update new font styles
+                const newFonts = {
+                    'glitch-effect': text => text.toUpperCase(),
+                    'matrix-effect': text => text.toUpperCase(),
+                    'holographic-effect': text => text.toUpperCase(),
+                    'neon-outline': text => text.toUpperCase(),
+                    'future-tech': text => text.toUpperCase(),
+                    'cyberpunk': text => text.toUpperCase(),
+                    'vaporwave': text => 'ＶＡＰＯＲＷＡＶＥ',
+                    'retro-game': text => text.toUpperCase(),
+                    'pixel-art': text => text.toUpperCase(),
+                    'comic-style': text => text.toUpperCase(),
+                    'graffiti': text => text.toUpperCase(),
+                    'alien-language': text => text.toUpperCase().split('').map(c => 
+                        String.fromCharCode(c.charCodeAt(0) + 1000)
+                    ).join(''),
+                    'magic-runes': text => 'ᚱᚢᚾᛖᛋ',
+                    'egyptian-hieroglyphs': text => '𓁹𓂀𓃻𓄿𓅂',
+                    'binary-code': text => text.split('').map(c => 
+                        c.charCodeAt(0).toString(2).padStart(8, '0')
+                    ).join(' '),
+                    'braille': text => '⠃⠗⠁⠊⠇⠇⠑'
+                };
+                
+                for (const [className, generator] of Object.entries(newFonts)) {
+                    const elements = document.querySelectorAll('.' + className);
+                    elements.forEach(el => {
+                        el.textContent = generator(text);
+                    });
+                }
+            }
+            
+            function applyColorToAllFonts(colorClass) {
+                document.querySelectorAll('.myfont p').forEach(p => {
+                    p.className = p.className.replace(/neon-\w+/g, '') + ' ' + colorClass;
+                });
+            }
+            
+            function filterFontsByCategory(category) {
+                fontItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+            
+            function copyToClipboard(text) {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
+            
+            function showCopiedNotification(text) {
+                const notification = document.createElement('div');
+                notification.className = 'copied';
+                notification.innerHTML = `
+                    <input class="text" value="${text}" />
+                    <span class="copybtn">
+                        <i class="fas fa-check"></i> Copied to clipboard!
+                    </span>
+                `;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 1500);
+            }
+            
+            function showLoading(show) {
+                if (show) {
+                    loading.classList.add('active');
+                } else {
+                    setTimeout(() => {
+                        loading.classList.remove('active');
+                    }, 300);
+                }
+            }
+            
+            function updateFontCount() {
+                const count = document.querySelectorAll('.myfont').length;
+                document.getElementById('fontCount').textContent = count;
+            }
+            
+            function applyNeonEffects() {
+                // Add random neon colors to fonts
+                const neonColors = ['neon-pink', 'neon-blue', 'neon-green', 'neon-yellow', 'neon-purple', 'neon-rainbow'];
+                document.querySelectorAll('.myfont p').forEach(p => {
+                    const randomColor = neonColors[Math.floor(Math.random() * neonColors.length)];
+                    p.classList.add(randomColor);
+                });
+            }
+            
+            function updateGlowIntensity(intensity) {
+                const glowStyles = {
+                    1: '0 0 5px currentColor',
+                    2: '0 0 10px currentColor, 0 0 20px currentColor',
+                    3: '0 0 15px currentColor, 0 0 30px currentColor, 0 0 45px currentColor'
+                };
+                
+                document.querySelectorAll('.neon-pink, .neon-blue, .neon-green, .neon-yellow, .neon-purple').forEach(el => {
+                    el.style.textShadow = glowStyles[intensity];
+                });
+            }
+            
+            function resetSettings() {
+                fontSizeSlider.value = 20;
+                fontSizeValue.textContent = '20px';
+                glowSlider.value = 2;
+                glowValue.textContent = 'Medium';
+                document.querySelectorAll('.myfont p').forEach(p => {
+                    p.style.fontSize = '20px';
+                });
+                updateGlowIntensity(2);
+            }
+            
+            // Initialize with sample text
+            input.value = 'Neon Text';
+            updateAllFonts('Neon Text');
+        });
+    </script>
+</body>
+</html>
